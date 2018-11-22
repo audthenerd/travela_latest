@@ -1,0 +1,58 @@
+// Place all the styles related to the Places controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+	text-align: center;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+h1.main-header {
+	border-top: 3px solid sienna;
+	border-bottom: 3px solid sienna;
+	padding: 10px 5px;
+}
+
+th {
+	background-color: lightskyblue;
+	border: 2px solid grey;
+}
+
+td {
+	width: 200px;
+	border: 1px solid lightgrey;
+}
+
+td.action {
+	text-align: left;
+	border-color: white;
+}
+
+td.action a {
+	text-decoration: none;
+	border: 1px solid grey;
+	border-radius: 4px;
+	padding: 3px;
+}
+
+div#new-form {
+	display: block;
+}
+
+div.dropdown {
+	margin-top: 5px;
+}
+
+div.header-pic {
+width: 100%;
+margin-bottom: 20px;
+}
+
+div.header-pic img {
+	height:250px;
+	width: 480px;
+	border-radius: 20px;
+	margin: 5px;
+}
+

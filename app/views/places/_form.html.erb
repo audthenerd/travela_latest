@@ -1,0 +1,30 @@
+<%= form_with scope: :place, url: trip_places_path(@trip), local: true do |form| %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_area :location, value: @location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :activity %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :trip_id, value: @trip %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

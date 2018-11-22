@@ -1,0 +1,7 @@
+<h1><%= @details.title %>: Add a New Location</h1>
+<p>Description: <%= @details.description %></p>
+<p>Dates: <%= @details.start_date %> - <%= @details.end_date %></p>
+
+<%= render 'form', place: @place %>
+
+<%= link_to 'Back', trip_places_path %>

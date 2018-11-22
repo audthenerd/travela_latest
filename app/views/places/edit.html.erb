@@ -1,0 +1,53 @@
+<h1>Editing Place</h1>
+
+<%= render 'form', place: @place %>
+
+<%= link_to 'Show', @place %> |
+<%= link_to 'Back', places_path %>
+<h1>Edit Location</h1>
+<h1><%= @trip.title %>: Your Itinerary</h1>
+<p>Description: <%= @trip.description %></p>
+<p>Dates: <%= @trip.start_date %> - <%= @trip.end_date %></p>
+<%= link_to 'Add a Location', new_trip_place_path %>
+
+<table>
+  <thead>
+    <tr>
+    	<th class="first">No.</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Date</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<%= form_with scope: :place, url: trip_place_path, method: 'put', local: true do |form| %>
+      <tr>
+      	<td><%= @place.id %></td>
+        <td><%= form.text_field :title %></td>
+        <td><%= form.text_area :content %></td>
+        <td><%= form.date_field :date %></td>
+        <td><%= form.text_area :location, value: @location %></td>
+        <%= form.hidden_field :trip_id %>
+      </tr>
+      <% @others.each do |other| %>
+      <tr>
+      	<td><%= other.id %></td>
+        <td><%= other.title %></td>
+        <td><%= other.content %></td>
+        <td><%= other.date %></td>
+        <td><%= other.location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Maps', trips_path %>
+<%= link_to 'Back to Itinerary', trip_places_path(@trip) %>

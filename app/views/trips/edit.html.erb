@@ -1,0 +1,31 @@
+<h1>Make changes to your trip</h1>
+
+<%= form_with model: @trip, local: true do |form| %>
+
+	<p>
+		<%= form.label :title %><br>
+		<%= form.text_field :title %>
+	</p>
+
+	<p>
+		<%= form.label :description %><br>
+		<%= form.text_area :description %>
+	</p>
+
+	<p>
+		<%= form.label :start_date %><br>
+		<%= form.date_field :start_date %>
+	</p>
+
+		<p>
+			<%= form.label :end_date %><br>
+			<%= form.date_field :end_date %>
+		</p>
+
+	<p>
+		<%= form.submit "Update" %>
+	</p>
+
+<% end %>
+
+<%= link_to 'Back to Maps', trips_path %>

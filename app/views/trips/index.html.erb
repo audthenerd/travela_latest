@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<div class="trips-body">
+<div class="header-pic"><img src="./assets/scenery1.jpg" /><img src="./assets/scenery2.jpg" /><img src="./assets/scenery3.jpg" /><img src="./assets/scenery4.jpg" /></div>
+<h1 class="main-header">Travela</h1>
+<%= link_to 'Add a New Trip', new_trip_path %>
+<table>
+	<thead>
+		<tr>
+			<th>Trip Name</th>
+			<th>Description</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @trips.each do |trip| %>
+			<tr>
+				<td><%= trip.title %></td>
+				<td><%= trip.description %></td>
+				<td><%= trip.start_date %></td>
+				<td><%= trip.end_date %></td>
+				<td class="action"><%= link_to 'View', trip_places_path(trip) %>
+					<%= link_to 'Edit', edit_trip_path(trip) %>
+					<%= link_to 'Delete', trip_path(trip),
+		        method: :delete,
+		        data: { confirm: 'Really Meh?' } %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<br>
+<%= javascript_pack_tag 'hello_react' %>
+<%= content_tag :div,
+  id: "trips_data",
+  data: @trips.to_json do %>
+<% end %>
+</div>
