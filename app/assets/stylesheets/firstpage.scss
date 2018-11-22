@@ -2,16 +2,88 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.bg-index {
-	height: 100%;
-  width: 100%;
+body {
+	overflow-y: hidden;
+}
+
+div.bg-index, div.bg-index1, div.bg-index2, div.bg-index3, div.bg-index4 {
+	display: inline-block;
+}
+
+div.bg-index img, div.bg-index1 img, div.bg-index2 img, div.bg-index3 img, div.bg-index4 img {
+	background-color: white;
+	border: 1px solid grey;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+div.photo-flex {
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	z-index: -3;
+	bottom: -12%;
+}
+
+div.bg-index{
+	z-index: -3;
+}
+
+div.bg-index1{
+	float: right;
+	margin-right: 10px;
+}
+
+div.bg-index4 {
+	position: absolute;
+ 	   left: 58%;
+    bottom: -18%;
+}
+
+div.bg-index img {
+	transform: rotate(-20deg);
+  width: 550px;
+
+}
+
+div.bg-index1 img {
+	transform: rotate(5deg);
+  width: 300px;
+}
+
+div.bg-index2 img {
+	transform: rotate(-5deg);
+  width: 300px;
+}
+
+div.bg-index3 img {
+	transform: rotate(15deg);
+  width: 450px;
+}
+
+div.bg-index4 img {
+	transform: rotate(-15deg);
+  width: 300px;
+}
+
+h1.title-index {
+	font-family: 'Bungee Inline', cursive;
+	font-size: 60px;
+	margin-left: 51%;
+}
+
+button.button-index {
+	font-size: 30px;
+	margin-left: 51%;
 }
 
 div.content {
+	width: 100%;
 	position: absolute;
-	z-index: 2;
-	top: 100px;
-	left: 100px;
-	background-color: white;
-	opacity: 0.7;
+	/*background: rgba(255, 255, 255, 0.7);*/
+	top: 15%;
 }
