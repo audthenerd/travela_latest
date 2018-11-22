@@ -251,10 +251,13 @@ function ipLookUp () {
 
 }
 
+
+
+
     componentWillReceiveProps(nextProps) {
         var reactState = this;
   // You don't have to do this check first, but it can help prevent an unneeded render
-      if (nextProps.clicked[0] !==  undefined) {
+      if (nextProps.clicked[0] !==  reactState.state.lat) {
         console.log("HELLO!");
 
         var pos = {
