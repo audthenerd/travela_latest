@@ -306,7 +306,8 @@ function ipLookUp () {
 
     var divStyle = {
         height: '500px',
-        width: '700px'
+        width: '700px',
+        marginTop: '10px'
     }
 
     return (
@@ -316,15 +317,7 @@ function ipLookUp () {
         <form onClick={this.clickHandler} className="search-results" >
             <input className="name" style={barStyle} ref={sb => this.sb = sb} onClick={this.changeHandler} id="autocomplete"/>
         </form>
-        <div className="dropdown">
-            <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">I want to see..
-            <span className="caret"></span></button>
-            <ul className="dropdown-menu">
-                <li><button value="food">Name</button></li>
-                <li><button value="poi">Popularity</button></li>
-                <li><button value="hotels">Customer Ratings</button></li>
-            </ul>
-        </div>
+
       </div>
 
             <div style={divStyle} id="map"></div>

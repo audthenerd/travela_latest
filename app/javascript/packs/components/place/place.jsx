@@ -62,7 +62,7 @@ sendData() {
 
 
 getPlaces() {
-  var url = `https://api.foursquare.com/v2/venues/explore/?${this.state.near}&venuePhotos=1&${this.state.section}&client_id=ZXBTIXJSKMP3JERUZMCLJOC5MTTJIYTSJI2XZ3IG4F3WISSE&client_secret=GPAN3ZXU51UEWKQ3GC2OJG22BJUSMPOXS3YW4VWKLDNYZQNP&v=20181113`;
+  var url = `https://api.foursquare.com/v2/venues/explore/?${this.state.near}&venuePhotos=1&${this.state.section}&client_id=SPIE1GMKQ5LQU2ELRDOY1TLO5YLYKBC31QXH54CAA1ADT4AE&client_secret=G0TD0ADHMNYWEXJ3SWYXUEKHIKWH2OZPS0S2MTOBHS5MNLPS&v=20181113`;
 
           fetch(url)
             .then((response) => response.json())
@@ -172,7 +172,7 @@ getPlaces() {
             </button>
             {dropDown}
           </div>
-          <ul>{squarePl}</ul>
+          <ul className="ul-places">{squarePl}</ul>
         </div>
     );
   }

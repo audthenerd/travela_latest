@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-	overflow-y: hidden;
-}
-
 div.bg-index, div.bg-index1, div.bg-index2, div.bg-index3, div.bg-index4 {
 	display: inline-block;
 }
@@ -19,6 +15,7 @@ div.bg-index img, div.bg-index1 img, div.bg-index2 img, div.bg-index3 img, div.b
   padding-bottom: 50px;
   margin: 10px;
   border-radius: 10px;
+  box-shadow: -5px 8px 20px grey;
 }
 
 div.photo-flex {
@@ -74,16 +71,23 @@ h1.title-index {
 	font-family: 'Bungee Inline', cursive;
 	font-size: 60px;
 	margin-left: 51%;
+	text-shadow: -2px 2px 2px #BB92A1;
 }
 
 button.button-index {
 	font-size: 30px;
 	margin-left: 51%;
+	border-radius: 20px;
+}
+
+.button-index a {
+	text-decoration: none;
+
 }
 
 div.content {
 	width: 100%;
 	position: absolute;
 	/*background: rgba(255, 255, 255, 0.7);*/
-	top: 15%;
+	top: 12%;
 }

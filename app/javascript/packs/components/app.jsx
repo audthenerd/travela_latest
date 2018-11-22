@@ -46,8 +46,7 @@ export default class App extends React.Component{
 
     getPoints(event){
         this.setState({
-            currentfs: [event.target.attributes.lat.nodeValue, event.target.attributes.lon.nodeValue],
-            venue: event.target.attributes.all.nodeValue
+            currentfs: [event.target.attributes.lat.nodeValue, event.target.attributes.lon.nodeValue]
         });
         console.log("currentfs", this.state.currentfs);
         console.log("current venue", this.state.venue);

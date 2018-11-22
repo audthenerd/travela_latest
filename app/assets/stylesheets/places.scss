@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div.place {
+	padding-left: 10px;
+}
+
 table {
 	text-align: center;
 	border-collapse: collapse;
@@ -56,4 +60,7 @@ div.header-pic img {
 	margin: 5px;
 }
 
+ul.ul-places {
+	padding-left: 0pt;
+}
 
