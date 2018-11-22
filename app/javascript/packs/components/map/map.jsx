@@ -15,6 +15,7 @@ var service;
 var infowindow;
 var map;
 
+
 class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -109,7 +110,8 @@ if (navigator.geolocation) {
              reactState.props.here(position);
 
             infowindow.setPosition(pos);
-            infowindow.setContent('Location found.');
+            infowindow.setContent('Your current location!');
+            setTimeout(function(){ infowindow.close(); }, 2000);
             infowindow.open(map);
             map.setCenter(pos);
           }, function() {
@@ -119,16 +121,6 @@ if (navigator.geolocation) {
           // Browser doesn't support Geolocation
           handleLocationError(false, infowindow, map.getCenter());
         }
-
-        function stuff() {
-            console.log("WORKS");
-            // reactState.setState({fslat: this.props.clicked[0],
-            //     fslng: this.props.clicked[1]});
-            //     map.panTo(this.state.fslat, this.state.fslng);
-            // console.log("hello, it works!!!");
-        }
-
-        stuff();
 
       function handleLocationError(browserHasGeolocation, infowindow, pos) {
         infowindow.setPosition(pos);
@@ -259,8 +251,46 @@ function ipLookUp () {
 
 }
 
-componentDidUpdate() {
-}
+    componentWillReceiveProps(nextProps) {
+        var reactState = this;
+  // You don't have to do this check first, but it can help prevent an unneeded render
+      if (nextProps.clicked[0] !==  undefined) {
+        console.log("HELLO!");
+
+        var pos = {
+              lat: this.state.lat,
+              lng: this.state.lng
+            };
+
+        reactState.setState({lat: nextProps.clicked[0], lng:nextProps.clicked[1]});
+        var latLng = new google.maps.LatLng(this.state.lat, this.state.lng);
+        map.panTo(latLng);
+        infowindow.setPosition(latLng);
+        map.setCenter(latLng);
+
+            var marker = new google.maps.Marker({
+              map: map,
+              position: latLng,
+              animation: google.maps.Animation.DROP,
+              icon: {
+                url: './assets/marker.png',
+                scaledSize: new google.maps.Size(70, 70)
+                }
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+
+          // console.log(place.geometry.location.lat());
+          infowindow.open(map);
+          reactState.props.name(place);
+          marker.setAnimation(google.maps.Animation.BOUNCE)
+           setTimeout(function(){ marker.setAnimation(null); }, 1500);
+            map.setCenter(marker.getPosition());
+            map.panTo(map.center);
+        });
+         }
+};
+
 
   render() {
     console.log("clickyyyyy", this.props.clicked[0]);
