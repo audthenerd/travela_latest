@@ -257,7 +257,7 @@ function ipLookUp () {
     componentWillReceiveProps(nextProps) {
         var reactState = this;
   // You don't have to do this check first, but it can help prevent an unneeded render
-      if (nextProps.clicked[0] !==  reactState.state.lat) {
+      if (Array.isArray(nextProps.clicked)) {
         console.log("HELLO!");
 
         var pos = {
@@ -281,6 +281,8 @@ function ipLookUp () {
                 }
         });
 
+               check(marker);
+
         google.maps.event.addListener(marker, 'click', function() {
 
           // console.log(place.geometry.location.lat());
@@ -291,8 +293,14 @@ function ipLookUp () {
             map.setCenter(marker.getPosition());
             map.panTo(map.center);
         });
-         }
+         };
+
+    function check(marker){
+        return map.getBounds().contains(marker.getPosition());
+    };
 };
+
+
 
 
   render() {
