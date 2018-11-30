@@ -5,9 +5,8 @@
     "node": "6.3.1"
   },
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "prod": "NODE_ENV=production node server.js",
-    "postinstall": "webpack -p"
+    "server": "webpack-dev-server",
+    "precompile": "rm -r public/assets/* && NODE_ENV=production webpack"
   },
   "dependencies": {
     "@rails/webpacker": "3.5",
