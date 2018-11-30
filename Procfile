@@ -1,2 +1,2 @@
-web: bundle exec puma rails s
+web: bundle exec rails s
 webpack: bin/webpack-dev-server
