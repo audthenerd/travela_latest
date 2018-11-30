@@ -4,9 +4,6 @@
   "engines": {
     "node": "6.3.1"
   },
-  "scripts": {
-    "postinstall": "cd client && npm install"
-  },
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
