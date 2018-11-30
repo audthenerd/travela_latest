@@ -1,1 +1,1 @@
-web: bundle exec rails s && ./node_modules/.bin/webpack-dev-server --config config/webpack.config.js
+web: bundle exec rails s && node server.js
