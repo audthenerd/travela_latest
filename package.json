@@ -4,10 +4,6 @@
   "engines": {
     "node": "6.3.1"
   },
-  "scripts": {
-    "webpack:deploy": "webpack --config=webpack/webpack.config.js -p",
-  	"heroku-postbuild": "npm run webpack:deploy"
-  },
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
