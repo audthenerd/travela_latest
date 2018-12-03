@@ -5,8 +5,8 @@
     "node": "6.3.1"
   },
   "scripts": {
-    "server": "webpack-dev-server",
-    "precompile": "rm -r public/assets/* && NODE_ENV=production webpack"
+    "webpack:deploy": "webpack --config=webpack/webpack.config.js -p",
+  	"heroku-postbuild": "npm run webpack:deploy"
   },
   "dependencies": {
     "@rails/webpacker": "3.5",
