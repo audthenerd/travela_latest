@@ -6,6 +6,8 @@ div.place {
 	padding-left: 10px;
 }
 
+
+
 table {
 	text-align: center;
 	border-collapse: collapse;
@@ -16,6 +18,14 @@ h1.main-header {
 	border-top: 3px solid sienna;
 	border-bottom: 3px solid sienna;
 	padding: 10px 5px;
+}
+
+a h1.main-header {
+
+	&:hover {
+		color: skyblue;
+		text-decoration: underline;
+	};
 }
 
 th {
@@ -64,3 +74,15 @@ ul.ul-places {
 	padding-left: 0pt;
 }
 
+
+/*$breakpoints: (phone: 400px,
+               tablet: 768px,
+               desktop: 1024px) !default;
+
+@include media(">phone", "<tablet") {
+
+	div.header-pic img {
+		width: 2vw
+	}
+}
+*/
