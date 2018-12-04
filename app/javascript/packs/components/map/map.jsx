@@ -251,25 +251,22 @@ function ipLookUp () {
 
 }
 
-
-
-
-    componentWillReceiveProps(nextProps) {
+componentWillReceiveProps(nextProps) {
         var reactState = this;
-  // You don't have to do this check first, but it can help prevent an unneeded render
-      if (Array.isArray(nextProps.clicked)) {
+
+    if (Array.isArray(nextProps.clicked)) {
         console.log("HELLO!");
+    let latProps = parseFloat(nextProps.clicked[0]);
+    let lngProps = parseFloat(nextProps.clicked[1]);
 
-        var pos = {
-              lat: this.state.lat,
-              lng: this.state.lng
-            };
-
-        reactState.setState({lat: nextProps.clicked[0], lng:nextProps.clicked[1]});
-        var latLng = new google.maps.LatLng(this.state.lat, this.state.lng);
+        var latLng = new google.maps.LatLng(latProps, lngProps);
         map.panTo(latLng);
-        infowindow.setPosition(latLng);
-        map.setCenter(latLng);
+        // infowindow.setPosition(latLng);
+        // map.setCenter(latLng);
+
+            if (marker && marker.setMap) {
+                 marker.setMap(null);
+            };
 
             var marker = new google.maps.Marker({
               map: map,
@@ -283,22 +280,96 @@ function ipLookUp () {
 
                check(marker);
 
+
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+
+        google.maps.event.addListener(marker, 'click', function(event) {
+            // var lat = event.latLng.lat();
+            // console.log('HELLO HERE', event.latLng);
+            geocodeLatLng(geocoder, map, infowindow);
+            getServices();
+          // console.log(place.geometry.location.lat());
+          // var infowindow = infowindow = new google.maps.InfoWindow({
+          //   content: '<div id="content" onmouseover="updateContent()">Hello'+lat+'</div>'
+          //   });
+          //   infowindow.setPosition(event.latLng);
+          //   infowindow.open(map,marker);
+          // // reactState.props.name(place);
+          marker.setAnimation(google.maps.Animation.BOUNCE)
+           setTimeout(function(){ marker.setAnimation(null); }, 1500);
+            map.setCenter(marker.getPosition());
+            map.panTo(map.center);
+
+        });
+    function getServices() {
+        console.log("GETTING SERVICES");
+    var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch({
+              location: {lat: latProps , lng: lngProps},
+              radius: 1000,
+              type: ['food', 'place_of_worship', 'establishment']
+            }, callback);
+};
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location,
+          animation: google.maps.Animation.DROP
+        });
+
+        marker.setMap(map);
         google.maps.event.addListener(marker, 'click', function() {
 
+
+          infowindow.setContent(place.name);
           // console.log(place.geometry.location.lat());
-          infowindow.open(map);
+          infowindow.open(map, this);
           reactState.props.name(place);
           marker.setAnimation(google.maps.Animation.BOUNCE)
            setTimeout(function(){ marker.setAnimation(null); }, 1500);
             map.setCenter(marker.getPosition());
             map.panTo(map.center);
         });
-         };
+      }
+
+};
+
+    function geocodeLatLng(geocoder, map, infowindow) {
+        var input = `${nextProps.clicked[0]}, ${nextProps.clicked[1]}`;
+        console.log(input);
+        var latlngStr = input.split(',', 2);
+        var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        geocoder.geocode({'location': latlng}, function(results, status) {
+          if (status === 'OK') {
+            console.log(results[0]);
+            if (results[0]) {
+              map.setZoom(17);
+              infowindow.setContent('<div id="content"><p>'+results[0].address_components[1].long_name+'</p><p>'+results[0].formatted_address+'</p></div>');
+              infowindow.open(map, marker);
+            } else {
+              window.alert('No results found');
+            }
+          } else {
+            window.alert('Geocoder failed due to: ' + status);
+          }
+        });
+      }
 
     function check(marker){
         return map.getBounds().contains(marker.getPosition());
     };
-};
+    };
 
 
 
