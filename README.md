@@ -5,7 +5,7 @@ Mission: To allow the planning of travel itineraries to be more convenient & eff
 
 
 ## :paperclip: What is Travela?
-Travela started off as a class project and the objective was to facilitate travellers who'd like to have a more organised itinerary planning experience. You'll be able to search for Places of Interest and then immediately add them into your itinerary all in one application.
+Travela started off as a class project and the objective was to facilitate travellers who'd like to have a more organised itinerary planning experience. You'll be able to search for Places of Interest and then immediately add them into your itinerary all in one application. <br>
 <img src="./app/assets/images/Travela-google.png" width="400px" /><img src="./app/assets/images/Travela-itinerary.png" height="300px" width="450px" />
 
 This application uses <b>React on Rails</b>, <b>PostgreSQL</b>, <b>Google Maps</b> and <b>Foursquare</b> APIs.
