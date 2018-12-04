@@ -22,7 +22,7 @@ rails s (in another CLI)
 ```
 
 ## :hammer: Build Process
-Here is a summary of the stages of building this applcation:
+Here is a summary of the stages of building this application:
 
   ### Step 1: Choosing the right platform for this application
   Why <a href="https://github.com/rails/webpacker">React on Rails</a>?
