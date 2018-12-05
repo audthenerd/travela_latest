@@ -4,6 +4,8 @@
 
 div.place {
 	padding-left: 10px;
+	overflow-y: scroll;
+	max-height: 600px;
 }
 
 table {
